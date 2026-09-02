@@ -266,7 +266,7 @@
         <ul>
           <li><b>A failed check does not stop the closure.</b> The ticket closes either way, so "verified" in our data only means a check ran — not that it passed. We cannot stand behind that word today</li>
           <li><b>We do not know whether ping-up means the problem is gone.</b> A line can be up at the moment we check and still be slow or dropping — and the same signal underwrites proactive detection later</li>
-          <li><b>When the check gives no verdict, there is no path to the customer.</b> The chat confirmation loop exists but is not triggered by an inconclusive check, so a silent customer is read as success</li>
+          <li><b>When the check gives an inconclusive verdict, there is no path to the customer.</b> The chat confirmation loop exists but is not triggered by an inconclusive check, so a silent customer is read as success</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">% resolved tickets carrying a verification verdict</span><span class="chip todo">False-resolution rate — ping down / check failed</span><span class="chip todo">Customer issue truly resolved vs CSP-reported resolved</span></div></div>
       </div>
