@@ -82,6 +82,7 @@
   .chip { font-size:.775rem; font-weight:550; padding:3px 9px; border-radius:5px; line-height:1.35; }
   .chip.live { background:#EDF5EE; color:var(--good); border:1px solid #CFE3D3; }
   .chip.gapc { background:var(--crit-wash); color:var(--crit); border:1px solid #F0D2CE; }
+  .chip.none { background:var(--accent-wash); color:var(--accent); border:1px solid #E8D9BC; font-style:italic; }
   .chip.todo { background:var(--surface-alt); color:var(--slate); border:1px dashed var(--rule); }
   .mx-note { font-size:.8rem; color:var(--slate); line-height:1.48; max-width:74ch; margin:0; }
   .mx-note b { color:var(--ink); font-weight:620; }
@@ -187,8 +188,8 @@
 <section class="sec">
   <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
   <p class="lede"><b>01–04 are repair</b> — a reported path that is broken today.
-  <b>05–06 are new capability.</b> Each carries the measure that tells us it worked; where that
-  measure does not exist yet, building it is part of the work.</p>
+  <b>05–06 are new capability.</b> Each item names the measures it moves — and of the nine
+  below, <b>only one is tracked today.</b> Building the measurement is part of the work.</p>
 
   <div class="rm">
 
@@ -204,7 +205,7 @@
           <li><b>Agent → CSP.</b> Availability, severity and fault clues learned on the call never reach the person fixing it</li>
           <li><b>CSP → customer.</b> The CSP has no idea this customer has already chased three times — one of the strongest urgency signals we hold</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip gapc">▼ CSP PN Delivery Rate · 90.8%</span><span class="chip todo">+ Status visibility across all 3 parties</span><span class="chip todo">+ Repeat contacts per ticket</span></div><p class="mx-note">PN delivery is the <b>only</b> visibility metric we have today — <b>~135 tickets a day</b> where the CSP is never pinged. Nothing measures what the agent or the customer can see.</p></div>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Repeat calls per ticket by the customer</span><span class="chip todo">Information visibility across parties</span></div></div>
       </div>
     </div>
 
@@ -219,7 +220,7 @@
           <li><b>Fix idempotency.</b> One ticket can currently become two complaints — two deadlines, and Quality OS counts the CSP's outcome twice</li>
           <li><b>Decide attribution first.</b> Whether a reopen is scored against the CSP changes their pay. That call is made before anything ships, not after</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ Reopen rate by subtype</span><span class="chip todo">+ Complaints per ticket</span><span class="chip live">▲ Reopen SRS–TAS Match Rate · 100%</span></div><p class="mx-note">The reopen metric we have checks that two systems <i>agree</i>, not how many reopens happened. <b>Reopen rate itself does not exist — build it first</b>; it is also the measure for item 03.</p></div>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Ticket reopen rate</span><span class="chip todo">Closure TAT after a ticket is reopened</span></div></div>
       </div>
     </div>
 
@@ -234,7 +235,7 @@
           <li><b>Use ping data to confirm the fix.</b> The same signal that detects a fault can confirm it is gone. This pairs directly with the item above</li>
           <li><b>Close the customer loop.</b> The chat confirmation already works — extend it so a denial reopens the ticket directly, and so a silent customer is not read as success</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ False-resolution rate</span><span class="chip todo">+ Verification pass/fail split</span><span class="chip live">▲ Ticket Close Match · 99.3%</span></div><p class="mx-note">Nothing counts how often verification returns a negative and the ticket closes anyway — <b>today that outcome is indistinguishable from a clean fix</b> in our data.</p></div>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">% resolved tickets carrying a verification verdict</span><span class="chip todo">False-resolution rate — ping down / check failed</span><span class="chip todo">Customer issue truly resolved vs CSP-reported resolved</span></div></div>
       </div>
     </div>
 
@@ -250,7 +251,7 @@
           <li><b>One public ticket ID and one status vocabulary.</b> The customer quotes one number, the CSP works another. Services can keep internal IDs; what a person sees should be uniform</li>
           <li><b>One working-hour window.</b> Service tickets run 11am–9pm; the rest of the estate runs 9am–9pm. Align it, or state why this work is different</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip live">▲ TAT Calculation Accuracy · 99.8%</span><span class="chip live">▲ Match Rate · 99.9%</span><span class="chip live">▲ Enrichment Rate · 98.9%</span><span class="chip todo">+ Customer-promised vs CSP-measured deadline gap</span></div><p class="mx-note">These reconciliation metrics score high because they check each service <i>against itself</i>. <b>Success here means needing fewer of them</b>, not raising them — nothing today compares the two deadlines a single ticket carries.</p></div>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip none">No metric — this item defines which system owns what</span></div></div>
       </div>
     </div>
 
@@ -265,7 +266,7 @@
           <li><b>Tell both parties early.</b> Notify the customer and the CSP that we believe something is wrong, with an ETA, before either has to ask</li>
           <li><b>Precision decides whether this ships.</b> A proactive ticket on a healthy connection costs real trust and real CSP time — false-positive rate is a gate, not a footnote</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ % issues detected before customer contact</span><span class="chip todo">+ Contacts avoided per detection</span><span class="chip todo">+ False-positive rate — guardrail</span><span class="chip live">▲ Tickets Created · 1,465/day baseline</span></div><p class="mx-note">Entirely new measurement. The <b>false-positive rate is a ship gate</b>, not a footnote — a proactive ticket on a healthy connection costs real trust and real CSP time.</p></div>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># issues the system detected before the customer reported it</span><span class="chip live"># service tickets reported by the customer</span></div></div>
       </div>
     </div>
 
@@ -280,7 +281,7 @@
           <li><b>One-tap bulk resolution.</b> TAS is entirely per-candidate today — this is what keeps detection from becoming a burden</li>
           <li><b>A deadline that reflects an outage</b> rather than an individual fault, so the CSP is not judged against a clock the situation makes impossible</li>
         </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ Tickets per outage incident</span><span class="chip todo">+ CSP load during an outage</span><span class="chip gapc">▼ NO_INTERNET P99 TAT · 126h vs 4h target</span></div><p class="mx-note">The P99 long tail is where repeat contacts already live — medians look healthy at 2.7h while the worst tickets sit for days. <b>This is the honesty check on item 05.</b></p></div>
+        
       </div>
     </div>
 
