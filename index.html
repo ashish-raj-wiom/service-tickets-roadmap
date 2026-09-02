@@ -64,6 +64,15 @@
   .tw { overflow-x:auto; }
 
   /* roadmap */
+  .plan { border:1px solid var(--rule); border-radius:9px; overflow:hidden; background:var(--surface); margin:0 0 30px; }
+  .pr { display:grid; grid-template-columns:30px 1fr auto auto; gap:14px; align-items:baseline; padding:10px 16px; border-bottom:1px solid var(--rule-soft); }
+  .pr:last-child { border-bottom:none; }
+  .pr .pn { font-size:.78rem; font-weight:700; color:var(--accent); }
+  .pr .pt { font-size:.885rem; font-weight:620; color:var(--ink); line-height:1.35; }
+  .pr .pc { font-size:.775rem; color:var(--slate-light); white-space:nowrap; }
+  .pr .pw { font-size:.79rem; font-weight:680; color:var(--accent); white-space:nowrap; min-width:66px; text-align:right; }
+  .pr .pw.tbd { color:var(--slate); font-weight:550; font-style:italic; }
+  @media (max-width:620px) { .pr { grid-template-columns:26px 1fr; } .pr .pc,.pr .pw { grid-column:2; text-align:left; } }
   .rm { border-top:1px solid var(--rule); }
   .item { display:grid; grid-template-columns:34px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); }
   .inum { font-size:.95rem; font-weight:700; color:var(--accent); padding-top:1px; }
@@ -201,9 +210,19 @@
 <section class="sec">
   <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
   <p class="lede"><b>01–03 are repair</b> — a reported path that is broken today.
-  <b>04–05 are new capability</b>, and <b>06 is foundational.</b> Each item names the measures it moves — and of the ten
+  <b>04–05 are new capability</b>, and <b>06 is foundational.</b> Each item lists the problems to be solved and the measures they move — and of the ten
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
+
+  <span class="gl" style="margin-bottom:8px">The plan at a glance — 22 problems, in this order</span>
+  <div class="plan">
+    <div class="pr"><span class="pn">01</span><span class="pt">Information flow</span><span class="pc">5 problems</span><span class="pw">Week 1–2</span></div>
+    <div class="pr"><span class="pn">02</span><span class="pt">Reopening of tickets</span><span class="pc">4 problems</span><span class="pw">Week 3–4</span></div>
+    <div class="pr"><span class="pn">03</span><span class="pt">CSP said resolved vs actually resolved</span><span class="pc">3 problems</span><span class="pw">Week 5</span></div>
+    <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">3 problems</span><span class="pw">Week 6–7</span></div>
+    <div class="pr"><span class="pn">05</span><span class="pt">Outage handling</span><span class="pc">3 problems</span><span class="pw">Week 8</span></div>
+    <div class="pr"><span class="pn">06</span><span class="pt">Service guardrails — who owns what</span><span class="pc">4 problems</span><span class="pw tbd">TBD</span></div>
+  </div>
 
   <div class="rm">
 
@@ -211,45 +230,15 @@
       <div class="inum">01</div>
       <div>
         <div class="ihead"><h3>Information flow</h3><span class="tag">O1</span><span class="when">Week 1–2</span></div>
-        <p class="prob"><b>The problem.</b> A ticket lives in four systems, and nobody working on
-        it can see the other three. So the only tool anyone has is to phone someone — <b>and that
-        call is the cost of the missing link.</b></p>
-
-        <span class="gl">What it costs today — three examples of many</span>
-        <div class="scen">
-          <div class="sc">
-            <span class="sc-h">1 · The customer who calls three times</span>
-            <p class="sc-b">Reports no internet at 9:43 PM, told 1:43 AM. Calls at 11 AM — the
-            agent sees only "Open", and cannot say whether a CSP accepted it or when anyone will
-            arrive. Calls again at 4 PM, same sentence.
-            <span class="sc-o">Three calls, no new information — and the CSP never learns they
-            chased.</span></p>
-          </div>
-          <div class="sc">
-            <span class="sc-h">2 · The CSP who travels to a finished job</span>
-            <p class="sc-b">The line recovers on its own and the agent marks it resolved in
-            Kapture. That closure never reaches the CSP's app.
-            <span class="sc-o">He travels to a completed job, and the clock still runs against
-            him. ~39 tickets a day.</span></p>
-          </div>
-          <div class="sc">
-            <span class="sc-h">3 · The context we capture, then never move</span>
-            <p class="sc-b">The customer is home only until 11 AM. The agent <b>logs it</b>
-            as a Kapture comment — which reaches Ticket Service Java and stops there.
-            <span class="sc-o">The CSP arrives at 12 PM to an empty house. We had it written down
-            the whole time; we just never moved it.</span></p>
-          </div>
-        </div>
-
-        <span class="gl">The pattern underneath</span>
-        <div class="gaps">
-          <div class="gp"><b>The customer cannot see progress</b><span>The app shows no live status, so calling is the only way to find out — the exact loop we are trying to break</span></div>
-          <div class="gp"><b>The agent cannot see the work</b><span>Kapture holds the ticket in full, but nothing about the execution — whether a CSP accepted it, whether a technician was assigned, or when anyone will arrive</span></div>
-          <div class="gp"><b>The agent cannot brief the CSP</b><span>Availability, severity and fault clues learned on the call have no field to travel in</span></div>
-          <div class="gp"><b>The CSP cannot see the history</b><span>No sight of how many times this customer has already chased — one of the strongest urgency signals we hold</span></div>
-        </div>
-
-        <p class="mx-note" style="margin:8px 0 0">Every one of these compounds wherever a party needs something another already holds — the examples above are illustrations, not the scope of the work.</p>
+        <p class="prob"><b>A ticket lives in four systems, and nobody working on it can see the other three.</b> So the only tool anyone has is to phone someone — and that call is the cost of the missing link.</p>
+        <ul>
+          <li><b>The customer cannot see any progress.</b> The app shows no live status, so calling is the only way to find out — the exact loop we are trying to break</li>
+          <li><b>The agent cannot see the execution.</b> Kapture holds the ticket in full, but nothing about whether a CSP accepted it, whether a technician was assigned, or when anyone will arrive. On a callback the agent can only repeat "Open"</li>
+          <li><b>What the agent learns on the call reaches nobody who can act on it.</b> Availability and fault clues are logged as a Kapture comment that stops at Ticket Service Java — a customer home only until 11 AM gets a 12 PM visit</li>
+          <li><b>The CSP does not know the customer has already chased.</b> Repeat-contact count is one of the strongest urgency signals we hold, and it never leaves Kapture</li>
+          <li><b>A closure made in Kapture never reaches the CSP's card.</b> He travels to a job that no longer exists, with the clock still running — roughly 39 tickets a day</li>
+        </ul>
+        <p class="mx-note" style="margin:0 0 4px">These are the gaps we know of. The pattern repeats wherever one party needs something another already holds.</p>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Repeat calls per ticket by the customer</span><span class="chip todo">Information visibility across parties</span><span class="chip live">TAT to resolve the ticket</span></div></div>
       </div>
     </div>
@@ -258,17 +247,14 @@
       <div class="inum">02</div>
       <div>
         <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O1</span><span class="when">Week 3–4</span></div>
-        <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work — and
-        today it is recorded, then wasted.</b> It creates a new complaint with a fresh deadline, the
-        CSP is never told it is a repeat, and because Quality scores each ticket on its own,
-        marking resolved becomes a consequence-free exit.</p>
+        <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work — and today it is recorded, then wasted.</b></p>
         <ul>
-          <li><b>Carry the lineage to the CSP.</b> SRS already stores the chain root, the parent ticket and the reopen count — the event it sends the CSP app simply does not ship them. The CSP should see this is a repeat attempt, and what was already tried</li>
-          <li><b>Score the original problem, not each ticket.</b> Quality should judge the chain, so a reopen cannot turn one bad outcome into two clean-looking ones</li>
-          <li><b>Decide whether the clock restarts.</b> A reopen gets a brand-new TAT today. That may be right, but it should be a choice we made rather than a side effect of creating a new record</li>
-          <li><b>Settle attribution before shipping.</b> Whether a reopen is scored against the CSP changes their pay, so that call comes first</li>
+          <li><b>The clock restarts on a reopen.</b> It creates a new complaint with a brand-new deadline, so the original breach never materialises</li>
+          <li><b>The CSP is never told it is a reopen.</b> SRS stores the chain root, parent ticket and reopen count; the event it sends the CSP app ships none of them, so a repeat is worked as a fresh fault</li>
+          <li><b>Quality scores each ticket on its own, not the original problem.</b> That makes marking resolved a consequence-free exit — one bad outcome becomes two clean-looking ones</li>
+          <li><b>It is undecided whether a reopen should count against the CSP at all.</b> Whichever way it goes, it changes their pay</li>
         </ul>
-        <p class="mx-note" style="margin:0 0 4px">The lineage is already captured — nothing reads it. This is a plumbing and scoring change, not a new data problem.</p>
+        <p class="mx-note" style="margin:0 0 4px">The lineage is already captured — nothing reads it.</p>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Ticket reopen rate</span><span class="chip todo">Closure TAT after a ticket is reopened</span></div></div>
       </div>
     </div>
@@ -277,13 +263,11 @@
       <div class="inum">03</div>
       <div>
         <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O1</span><span class="when">Week 5</span></div>
-        <p class="prob">The connectivity check cannot fail a resolution — a negative verdict
-        still closes the ticket as resolved <i>and</i> system-verified.</p>
+        <p class="prob"><b>The connectivity check cannot fail a resolution.</b> A negative verdict still closes the ticket as resolved <i>and</i> system-verified.</p>
         <ul>
-          <li><b>Let verification block closure.</b> A check that cannot fail is a measurement, not a gate — until it can, "verified" is not a claim we can stand behind</li>
-          <li><b>Use ping data to confirm the fix.</b> The same signal that detects a fault can confirm it is gone. This pairs directly with the item above</li>
-          <li><b>Establish that ping-up actually means fixed.</b> A green ping is not proof the customer's problem is gone — a line can be up at the moment we check and still be slow or dropping. Measure how often a system-verified ticket comes back before trusting the check to gate closure. The same signal underwrites proactive detection later, so proving it here pays twice</li>
-          <li><b>Ask the customer only when the system cannot tell.</b> Where the ping check gives a clear verdict, trust it; where it cannot, the customer becomes the verifier. The chat loop already works — it needs the right trigger, not a rebuild</li>
+          <li><b>A check that cannot fail is a measurement, not a gate.</b> Until it can block closure, "verified" in our data is not a claim we can stand behind</li>
+          <li><b>We do not know whether ping-up means the problem is gone.</b> A line can be up at the moment we check and still be slow or dropping — and the same signal underwrites proactive detection later</li>
+          <li><b>When the check gives no verdict, there is no path to the customer.</b> The chat confirmation loop exists but is not triggered by an inconclusive check, so a silent customer is read as success</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">% resolved tickets carrying a verification verdict</span><span class="chip todo">False-resolution rate — ping down / check failed</span><span class="chip todo">Customer issue truly resolved vs CSP-reported resolved</span></div></div>
       </div>
@@ -293,11 +277,11 @@
       <div class="inum">04</div>
       <div>
         <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O2</span><span class="when">Week 6–7</span></div>
-        <p class="prob">Every ticket today starts with a customer contact. Nothing in the system
-        looks for a problem before someone reports it.</p>
+        <p class="prob"><b>Every ticket today starts with a customer contact.</b> Nothing in the system looks for a problem before someone reports it.</p>
         <ul>
-          <li><b>Feed telemetry into classification.</b> SRS already carries the anomaly scaffolding — classes, executors and deadlines exist, and nothing feeds them. This is the single unlock</li>
-          <li><b>Tell both parties early.</b> Notify the customer and the CSP that we believe something is wrong, with an ETA, before either has to ask</li>
+          <li><b>Nothing feeds the anomaly path.</b> SRS already carries the scaffolding — classes, executors and deadlines exist — and no telemetry reaches it</li>
+          <li><b>Neither the customer nor the CSP hears anything until the customer initiates.</b> Even where we could know first, there is no way to say so</li>
+          <li><b>We cannot yet tell a real fault from a false alarm.</b> A proactive ticket on a healthy connection costs trust and CSP time, and we have no measure of how often that would happen</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># issues the system detected before the customer reported it</span><span class="chip live"># service tickets reported by the customer</span></div></div>
       </div>
@@ -307,14 +291,12 @@
       <div class="inum">05</div>
       <div>
         <div class="ihead"><h3>Outage handling</h3><span class="tag">O2</span><span class="when">Week 8</span></div>
-        <p class="prob">Outages and service tickets are unlinked. At scale this is where
-        detection either pays off or buries the CSP.</p>
+        <p class="prob"><b>Outages and service tickets are unlinked.</b> At scale this is where detection either pays off or buries the CSP.</p>
         <ul>
-          <li><b>Club tickets from one outage</b> instead of many ungrouped ones on a path that already skips duplicate detection</li>
-          <li><b>One-tap bulk resolution.</b> TAS is entirely per-candidate today — this is what keeps detection from becoming a burden</li>
-          <li><b>A deadline that reflects an outage</b> rather than an individual fault, so the CSP is not judged against a clock the situation makes impossible</li>
+          <li><b>One outage produces many ungrouped tickets</b>, on a path that already skips duplicate detection</li>
+          <li><b>There is no way to clear them together.</b> TAS is entirely per-candidate, so an outage is worked one ticket at a time</li>
+          <li><b>An outage ticket carries the same deadline as an individual fault</b>, so the CSP is judged against a clock the situation makes impossible</li>
         </ul>
-
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># outages detected</span><span class="chip todo"># outage-ticket resolution TAT</span></div></div>
         
       </div>
@@ -325,13 +307,12 @@
       <div>
         <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O1</span><span class="when tbd">TBD</span></div>
         <p class="mx-note" style="background:var(--accent-wash);border-radius:6px;padding:9px 13px;margin:0 0 10px;max-width:74ch"><b>Why this sits last.</b> This is the fundamental one — fixing it lets future services work in sync instead of us patching around each other. It is last only because it moves the objective less directly than the items above, not because it matters less.</p>
-        <p class="prob"><b>Chaotic today.</b> Two systems compute the deadline, four hold a
-        status, and no one owns the boundaries between them.</p>
+        <p class="prob"><b>Chaotic today.</b> Responsibilities overlap, and no one owns the boundaries between services.</p>
         <ul>
-          <li><b>Write a responsibility charter.</b> Where two services own the same thing, pick one and <i>delete</i> the other rather than reconciling them</li>
-          <li><b>One TAT calculator, every surface.</b> A ticket raised at 21:43 promises the customer 01:43 while the CSP is measured against 15:00 the next day — same ticket, two promises</li>
-
-          <li><b>One working-hour window.</b> Service tickets run 11am–9pm; the rest of the estate runs 9am–9pm. Align it, or state why this work is different</li>
+          <li><b>Two systems compute the deadline independently</b> and neither reads the other — a ticket raised at 21:43 promises the customer 01:43 while the CSP is measured against 15:00 the next day</li>
+          <li><b>Four systems hold a status for the same ticket</b>, in four vocabularies, with no shared word for the same moment</li>
+          <li><b>Service tickets run an 11am–9pm working window; the rest of the estate runs 9am–9pm.</b> Nobody has decided whether that difference is intended</li>
+          <li><b>Where two services own the same thing, no one owns the boundary.</b> Adding a ticket type needs coordinated edits in three places, and a miss is silent</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip none">No metric — this item defines which system owns what</span></div></div>
       </div>
