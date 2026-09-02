@@ -1,0 +1,296 @@
+<title>Service Tickets — Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  :root {
+    --ground:#FBFBFA; --surface:#FFFFFF; --surface-alt:#F3F4F6;
+    --ink:#16191D; --ink-soft:#3E444C; --slate:#6A717B; --slate-light:#9AA1AB;
+    --rule:#E2E4E8; --rule-soft:#EFF0F2;
+    --accent:#8A5A12; --accent-wash:#FBF4E7;
+    --crit:#A32219; --crit-wash:#FCEEEC;
+    --future:#1F4E9C; --future-wash:#EEF3FC;
+    --good:#2F6B3A;
+    --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --serif:"Source Serif 4",Georgia,serif;
+    color-scheme: light;
+  }
+  *,*::before,*::after { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 30px 70px; }
+
+  /* masthead */
+  header { padding:46px 0 0; }
+  .label { font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+  h1 { font-size:clamp(1.7rem,3.8vw,2.35rem); font-weight:700; letter-spacing:-.025em; line-height:1.12; margin:0 0 12px; }
+  .sub { font-family:var(--serif); font-size:1.08rem; line-height:1.5; color:var(--ink-soft); max-width:62ch; margin:0 0 20px; }
+  .by { font-size:12.5px; color:var(--slate); padding-bottom:22px; border-bottom:1px solid var(--rule); }
+
+  h2 { font-size:1.18rem; font-weight:650; letter-spacing:-.015em; margin:0; }
+  .sec { margin:46px 0 0; }
+  .sec-head { display:flex; align-items:baseline; gap:13px; padding-bottom:10px; border-bottom:2px solid var(--ink); margin-bottom:20px; }
+  .sec-num { font-size:12px; font-weight:700; color:var(--accent); letter-spacing:.08em; }
+  .lede { font-family:var(--serif); font-size:1rem; color:var(--ink-soft); max-width:68ch; margin:0 0 22px; }
+
+  /* objective */
+  .obj-stmt { font-family:var(--serif); font-size:1.18rem; line-height:1.5; border-left:3px solid var(--accent); padding:2px 0 2px 22px; max-width:60ch; margin-bottom:22px; }
+  .objs { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .obj { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--future); border-radius:8px; padding:17px 19px; }
+  .obj .oid { font-size:11px; font-weight:700; letter-spacing:.09em; color:var(--future); display:block; margin-bottom:5px; }
+  .obj h3 { font-size:.98rem; font-weight:650; margin:0 0 7px; line-height:1.35; }
+  .obj p { font-size:.87rem; line-height:1.5; color:var(--ink-soft); margin:0; }
+
+  .note { font-size:.85rem; color:var(--ink-soft); background:var(--accent-wash); border-radius:7px; padding:11px 15px; margin-top:18px; max-width:70ch; }
+  .note b { color:var(--accent); }
+
+  /* flow strip */
+  .flow { display:flex; align-items:stretch; gap:0; background:var(--surface); border:1px solid var(--rule); border-radius:9px; overflow-x:auto; margin-bottom:9px; }
+  .fnode { flex:1 1 0; min-width:132px; padding:14px 15px; border-right:1px solid var(--rule-soft); }
+  .fnode:last-child { border-right:none; }
+  .fnode .fk { font-size:9.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--slate-light); display:block; margin-bottom:5px; }
+  .fnode .fn { font-size:.9rem; font-weight:650; display:block; margin-bottom:3px; line-height:1.3; }
+  .fnode .fd { font-size:.78rem; color:var(--slate); line-height:1.4; }
+  .entry { background:var(--surface-alt); }
+  .flow-cap { font-size:.8rem; color:var(--slate); margin:0 0 26px; }
+
+  /* actors table */
+  table { width:100%; border-collapse:collapse; font-size:.87rem; }
+  th { text-align:left; font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--slate); padding:0 14px 8px 0; border-bottom:1.5px solid var(--rule); }
+  td { padding:11px 14px 11px 0; border-bottom:1px solid var(--rule-soft); vertical-align:top; line-height:1.45; }
+  td:first-child { font-weight:650; white-space:nowrap; }
+  td.plat { color:var(--ink-soft); white-space:nowrap; }
+  td.act { color:var(--ink-soft); }
+  .tw { overflow-x:auto; }
+
+  /* roadmap */
+  .rm { border-top:1px solid var(--rule); }
+  .item { display:grid; grid-template-columns:34px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); }
+  .inum { font-size:.95rem; font-weight:700; color:var(--accent); padding-top:1px; }
+  .ihead { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:7px; }
+  .ihead h3 { font-size:1.02rem; font-weight:650; margin:0; letter-spacing:-.01em; }
+  .tag { font-size:9.5px; font-weight:700; letter-spacing:.08em; padding:2px 7px; border-radius:4px; background:var(--future-wash); color:var(--future); }
+  .prob { font-size:.87rem; color:var(--crit); background:var(--crit-wash); border-radius:6px; padding:8px 12px; margin:0 0 10px; max-width:74ch; }
+  .prob b { font-weight:650; }
+  ul { margin:0 0 10px; padding-left:17px; font-size:.88rem; line-height:1.52; color:var(--ink-soft); }
+  li { margin-bottom:4px; }
+  li:last-child { margin-bottom:0; }
+  li b { color:var(--ink); font-weight:620; }
+  .mx { margin-top:11px; padding-top:10px; border-top:1px dashed var(--rule); }
+  .mx-l { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin-bottom:7px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+  .chip { font-size:.775rem; font-weight:550; padding:3px 9px; border-radius:5px; line-height:1.35; }
+  .chip.live { background:#EDF5EE; color:var(--good); border:1px solid #CFE3D3; }
+  .chip.gapc { background:var(--crit-wash); color:var(--crit); border:1px solid #F0D2CE; }
+  .chip.todo { background:var(--surface-alt); color:var(--slate); border:1px dashed var(--rule); }
+  .mx-note { font-size:.8rem; color:var(--slate); line-height:1.48; max-width:74ch; margin:0; }
+  .mx-note b { color:var(--ink); font-weight:620; }
+  .meas { font-size:.82rem; color:var(--slate); border-left:2px solid var(--rule); padding-left:12px; max-width:74ch; }
+  .meas b { color:var(--ink); font-weight:620; }
+  .meas .gap { color:var(--crit); font-weight:620; }
+  .meas .live { color:var(--good); font-weight:620; }
+
+  .close { margin-top:38px; padding:18px 22px; background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:8px; }
+  .close p { font-family:var(--serif); font-size:1.02rem; line-height:1.55; color:var(--ink-soft); margin:0; max-width:72ch; }
+  .close b { color:var(--ink); }
+
+  @media (max-width:620px) { .item { grid-template-columns:1fr; gap:6px; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="label">Service Tickets POD · Roadmap</div>
+  <h1>Service Tickets: what we are building, and why</h1>
+  <p class="sub">A customer's issue should be found early, fixed fast, and visible to everyone
+  working on it. Today none of those three hold. This is the plan to change that.</p>
+  <div class="by">Ashish Raj · PM, Service Tickets POD · 2 Sep 2026</div>
+</header>
+
+<!-- ============ OBJECTIVE ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Objective</h2></div>
+
+  <p class="obj-stmt">When a customer's service breaks, Wiom should find out first, act before
+  they have to ask, and — while it is being fixed — keep everyone able to see what is happening.</p>
+
+  <div class="objs">
+    <div class="obj">
+      <span class="oid">O1</span>
+      <h3>Shrink the share of issues the customer has to report</h3>
+      <p>Every ticket today begins with a customer contact. Move toward detecting the problem
+      and acting before they need to call.</p>
+    </div>
+    <div class="obj">
+      <span class="oid">O2</span>
+      <h3>Make the reported path shorter, and visible to everyone on it</h3>
+      <p>Resolve faster — and let the customer, CSP and agent all see where the ticket stands.
+      Being unheard is a separate harm from being unresolved.</p>
+    </div>
+  </div>
+
+  <p class="note"><b>Scope.</b> This starts the moment an issue exists. Preventing issues is
+  network and infrastructure's mandate — we own what happens between an issue arising and it
+  being genuinely resolved.</p>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">02</span><h2>How a ticket moves today</h2></div>
+  <p class="lede">Three ways in, all converging on one relay before anything reaches the CSP.
+  Nothing in this path is proactive — every ticket starts with a customer contact.</p>
+
+  <div class="flow">
+    <div class="fnode entry"><span class="fk">Entry 1</span><span class="fn">IVR / Call centre</span><span class="fd">Agent picks a type in Kapture</span></div>
+    <div class="fnode entry"><span class="fk">Entry 2</span><span class="fn">Customer app chat</span><span class="fd">Self-diagnosis, then a ticket if still broken</span></div>
+    <div class="fnode entry"><span class="fk">Entry 3</span><span class="fn">Kapture direct</span><span class="fd">Agent creates it outright</span></div>
+    <div class="fnode"><span class="fk">Relay</span><span class="fn">Ticket Service</span><span class="fd">Decides what reaches the OS</span></div>
+    <div class="fnode"><span class="fk">Authority</span><span class="fn">SRS</span><span class="fd">Classifies, stamps the deadline, closes</span></div>
+    <div class="fnode"><span class="fk">Execution</span><span class="fn">TAS → CSP app</span><span class="fd">The card the CSP actually works</span></div>
+  </div>
+  <p class="flow-cap">Resolution flows back to Kapture. A closure made <i>in</i> Kapture does not
+  flow forward — the ticket stays open on the CSP's card.</p>
+
+  <div class="tw">
+  <table>
+    <tr><th>Actor</th><th>Platform</th><th>What they can do</th></tr>
+    <tr>
+      <td>Customer</td>
+      <td class="plat">Customer app · phone</td>
+      <td class="act">Raise a complaint (chat or call) · reopen · confirm or deny a resolution in chat · view a status that shows nothing about progress</td>
+    </tr>
+    <tr>
+      <td>Call-centre agent</td>
+      <td class="plat">Kapture</td>
+      <td class="act">Create the ticket · set type, queue and priority · add comments · occasionally mark resolved. <b>Only creation travels downstream</b> — comments and Kapture-side resolves stop there</td>
+    </tr>
+    <tr>
+      <td>CSP</td>
+      <td class="plat">CSP app (TAS)</td>
+      <td class="act">Accept · assign a technician · start work · diagnose · escalate · resolve, or report unresolved with a reason</td>
+    </tr>
+    <tr>
+      <td>Technician</td>
+      <td class="plat">Via the CSP</td>
+      <td class="act">Does the field work. Not visible to SRS — the authority never learns who actually attended</td>
+    </tr>
+    <tr>
+      <td>System</td>
+      <td class="plat">SRS · Ticket Service</td>
+      <td class="act">Classify · stamp TAT · escalate · run the connectivity check · close · signal Quality OS, which drives CSP score, bonus and routing</td>
+    </tr>
+  </table>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
+  <p class="lede"><b>01–04 are repair</b> — a reported path that is broken today.
+  <b>05–06 are new capability.</b> Each carries the measure that tells us it worked; where that
+  measure does not exist yet, building it is part of the work.</p>
+
+  <div class="rm">
+
+    <div class="item">
+      <div class="inum">01</div>
+      <div>
+        <div class="ihead"><h3>Information flow</h3><span class="tag">O2</span></div>
+        <p class="prob"><b>The largest gap.</b> Once a ticket exists, none of the three parties
+        can see what the others are doing.</p>
+        <ul>
+          <li><b>Customer → status.</b> The app shows no live progress, so calling is the only way to find out — the exact loop we are trying to break</li>
+          <li><b>Agent → ticket.</b> On a callback the agent sees no status and no CSP progress, and cannot reach the partner</li>
+          <li><b>Agent → CSP.</b> Availability, severity and fault clues learned on the call never reach the person fixing it</li>
+          <li><b>CSP → customer.</b> The CSP has no idea this customer has already chased three times — one of the strongest urgency signals we hold</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip gapc">▼ CSP PN Delivery Rate · 90.8%</span><span class="chip todo">+ Status visibility across all 3 parties</span><span class="chip todo">+ Repeat contacts per ticket</span></div><p class="mx-note">PN delivery is the <b>only</b> visibility metric we have today — <b>~135 tickets a day</b> where the CSP is never pinged. Nothing measures what the agent or the customer can see.</p></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">02</div>
+      <div>
+        <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O2</span></div>
+        <p class="prob">A reopen arrives looking like a brand-new problem, so the CSP works it
+        from scratch.</p>
+        <ul>
+          <li><b>Carry the lineage.</b> A reopen should reach the CSP as a repeat attempt on the same fault, with what was already tried</li>
+          <li><b>Fix idempotency.</b> One ticket can currently become two complaints — two deadlines, and Quality OS counts the CSP's outcome twice</li>
+          <li><b>Decide attribution first.</b> Whether a reopen is scored against the CSP changes their pay. That call is made before anything ships, not after</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ Reopen rate by subtype</span><span class="chip todo">+ Complaints per ticket</span><span class="chip live">▲ Reopen SRS–TAS Match Rate · 100%</span></div><p class="mx-note">The reopen metric we have checks that two systems <i>agree</i>, not how many reopens happened. <b>Reopen rate itself does not exist — build it first</b>; it is also the measure for item 03.</p></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">03</div>
+      <div>
+        <div class="ihead"><h3>Verification of resolved tickets</h3><span class="tag">O2</span></div>
+        <p class="prob">The connectivity check cannot fail a resolution — a negative verdict
+        still closes the ticket as resolved <i>and</i> system-verified.</p>
+        <ul>
+          <li><b>Let verification block closure.</b> A check that cannot fail is a measurement, not a gate — until it can, "verified" is not a claim we can stand behind</li>
+          <li><b>Use ping data to confirm the fix.</b> The same signal that detects a fault can confirm it is gone. This pairs directly with the item above</li>
+          <li><b>Close the customer loop.</b> The chat confirmation already works — extend it so a denial reopens the ticket directly, and so a silent customer is not read as success</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ False-resolution rate</span><span class="chip todo">+ Verification pass/fail split</span><span class="chip live">▲ Ticket Close Match · 99.3%</span></div><p class="mx-note">Nothing counts how often verification returns a negative and the ticket closes anyway — <b>today that outcome is indistinguishable from a clean fix</b> in our data.</p></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">04</div>
+      <div>
+        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O2</span></div>
+        <p class="prob"><b>Chaotic today.</b> Two systems compute the deadline, four hold a
+        status, and no one owns the boundaries between them.</p>
+        <ul>
+          <li><b>Write a responsibility charter.</b> Where two services own the same thing, pick one and <i>delete</i> the other rather than reconciling them</li>
+          <li><b>One TAT calculator, every surface.</b> A ticket raised at 21:43 promises the customer 01:43 while the CSP is measured against 15:00 the next day — same ticket, two promises</li>
+          <li><b>One public ticket ID and one status vocabulary.</b> The customer quotes one number, the CSP works another. Services can keep internal IDs; what a person sees should be uniform</li>
+          <li><b>One working-hour window.</b> Service tickets run 11am–9pm; the rest of the estate runs 9am–9pm. Align it, or state why this work is different</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip live">▲ TAT Calculation Accuracy · 99.8%</span><span class="chip live">▲ Match Rate · 99.9%</span><span class="chip live">▲ Enrichment Rate · 98.9%</span><span class="chip todo">+ Customer-promised vs CSP-measured deadline gap</span></div><p class="mx-note">These reconciliation metrics score high because they check each service <i>against itself</i>. <b>Success here means needing fewer of them</b>, not raising them — nothing today compares the two deadlines a single ticket carries.</p></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">05</div>
+      <div>
+        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O1</span></div>
+        <p class="prob">Every ticket today starts with a customer contact. Nothing in the system
+        looks for a problem before someone reports it.</p>
+        <ul>
+          <li><b>Feed telemetry into classification.</b> SRS already carries the anomaly scaffolding — classes, executors and deadlines exist, and nothing feeds them. This is the single unlock</li>
+          <li><b>Tell both parties early.</b> Notify the customer and the CSP that we believe something is wrong, with an ETA, before either has to ask</li>
+          <li><b>Precision decides whether this ships.</b> A proactive ticket on a healthy connection costs real trust and real CSP time — false-positive rate is a gate, not a footnote</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ % issues detected before customer contact</span><span class="chip todo">+ Contacts avoided per detection</span><span class="chip todo">+ False-positive rate — guardrail</span><span class="chip live">▲ Tickets Created · 1,465/day baseline</span></div><p class="mx-note">Entirely new measurement. The <b>false-positive rate is a ship gate</b>, not a footnote — a proactive ticket on a healthy connection costs real trust and real CSP time.</p></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">06</div>
+      <div>
+        <div class="ihead"><h3>Outage handling</h3><span class="tag">O1</span></div>
+        <p class="prob">Outages and service tickets are unlinked. At scale this is where
+        detection either pays off or buries the CSP.</p>
+        <ul>
+          <li><b>Club tickets from one outage</b> instead of many ungrouped ones on a path that already skips duplicate detection</li>
+          <li><b>One-tap bulk resolution.</b> TAS is entirely per-candidate today — this is what keeps detection from becoming a burden</li>
+          <li><b>A deadline that reflects an outage</b> rather than an individual fault, so the CSP is not judged against a clock the situation makes impossible</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">+ Tickets per outage incident</span><span class="chip todo">+ CSP load during an outage</span><span class="chip gapc">▼ NO_INTERNET P99 TAT · 126h vs 4h target</span></div><p class="mx-note">The P99 long tail is where repeat contacts already live — medians look healthy at 2.7h while the worst tickets sit for days. <b>This is the honesty check on item 05.</b></p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="close">
+    <p><b>The through-line.</b> Items 01–04 make the reported path work as people already assume
+    it does. Items 05–06 move us off it. The order matters: detection built on a path we cannot
+    yet see into, measure, or trust would scale the problem rather than the fix.</p>
+  </div>
+</section>
+
+</div>
