@@ -131,15 +131,15 @@
   <div class="objs">
     <div class="obj">
       <span class="oid">O1</span>
-      <h3>Shrink the share of issues the customer has to report</h3>
-      <p>Every ticket today begins with a customer contact. Move toward detecting the problem
-      and acting before they need to call.</p>
-    </div>
-    <div class="obj">
-      <span class="oid">O2</span>
       <h3>Resolve faster, and keep everyone on the ticket able to see it</h3>
       <p>Resolve faster — and let the customer, CSP and agent all see where the ticket stands.
       Being unheard is a separate harm from being unresolved.</p>
+    </div>
+    <div class="obj">
+      <span class="oid">O2</span>
+      <h3>Shrink the share of issues the customer has to report</h3>
+      <p>Every ticket today begins with a customer contact. Move toward detecting the problem
+      and acting before they need to call.</p>
     </div>
   </div>
 
@@ -200,8 +200,8 @@
 <!-- ============ ROADMAP ============ -->
 <section class="sec">
   <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
-  <p class="lede"><b>01–04 are repair</b> — a reported path that is broken today.
-  <b>05–06 are new capability.</b> Each item names the measures it moves — and of the ten
+  <p class="lede"><b>01–03 are repair</b> — a reported path that is broken today.
+  <b>04–05 are new capability</b>, and <b>06 is foundational.</b> Each item names the measures it moves — and of the ten
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
@@ -210,7 +210,7 @@
     <div class="item">
       <div class="inum">01</div>
       <div>
-        <div class="ihead"><h3>Information flow</h3><span class="tag">O2</span><span class="when">Week 1–2</span></div>
+        <div class="ihead"><h3>Information flow</h3><span class="tag">O1</span><span class="when">Week 1–2</span></div>
         <p class="prob"><b>The problem.</b> A ticket lives in four systems, and nobody working on
         it can see the other three. So the only tool anyone has is to phone someone — <b>and that
         call is the cost of the missing link.</b></p>
@@ -257,14 +257,16 @@
     <div class="item">
       <div class="inum">02</div>
       <div>
-        <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O2</span><span class="when">Week 3–4</span></div>
-        <p class="prob">A reopen arrives looking like a brand-new problem, so the CSP works it
-        from scratch.</p>
+        <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O1</span><span class="when">Week 3–4</span></div>
+        <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work.
+        Today it is recorded, and then wasted.</b></p>
         <ul>
-          <li><b>Carry the lineage.</b> A reopen should reach the CSP as a repeat attempt on the same fault, with what was already tried</li>
-          
+          <li><b>What happens today.</b> A reopen creates a <i>new</i> complaint with its own fresh deadline — SRS recomputes the TAT from the reopen moment, so the clock starts again at zero</li>
+          <li><b>The CSP is never told it is a reopen.</b> SRS does store the lineage — chain root, parent ticket, reopen count — but the event it sends the CSP app carries only the deadline. The CSP works what looks like a brand-new fault, from scratch</li>
+          <li><b>Which makes reopening a consequence-free exit.</b> Quality scores each ticket on its own rather than the original problem. A CSP near a breach can mark it resolved; the reopen becomes a separate ticket with a clean clock, and neither ticket looks bad</li>
           <li><b>Decide attribution first.</b> Whether a reopen is scored against the CSP changes their pay. That call is made before anything ships, not after</li>
         </ul>
+        <p class="mx-note" style="margin:0 0 4px">The lineage is already captured — nothing reads it. This is a plumbing and scoring change, not a new data problem.</p>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Ticket reopen rate</span><span class="chip todo">Closure TAT after a ticket is reopened</span></div></div>
       </div>
     </div>
@@ -272,7 +274,7 @@
     <div class="item">
       <div class="inum">03</div>
       <div>
-        <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O2</span><span class="when">Week 5</span></div>
+        <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O1</span><span class="when">Week 5</span></div>
         <p class="prob">The connectivity check cannot fail a resolution — a negative verdict
         still closes the ticket as resolved <i>and</i> system-verified.</p>
         <ul>
@@ -287,7 +289,39 @@
     <div class="item">
       <div class="inum">04</div>
       <div>
-        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O2</span><span class="when tbd">TBD</span></div>
+        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O2</span><span class="when">Week 6–7</span></div>
+        <p class="prob">Every ticket today starts with a customer contact. Nothing in the system
+        looks for a problem before someone reports it.</p>
+        <ul>
+          <li><b>Feed telemetry into classification.</b> SRS already carries the anomaly scaffolding — classes, executors and deadlines exist, and nothing feeds them. This is the single unlock</li>
+          <li><b>Tell both parties early.</b> Notify the customer and the CSP that we believe something is wrong, with an ETA, before either has to ask</li>
+        </ul>
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># issues the system detected before the customer reported it</span><span class="chip live"># service tickets reported by the customer</span></div></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="inum">05</div>
+      <div>
+        <div class="ihead"><h3>Outage handling</h3><span class="tag">O2</span><span class="when">Week 8</span></div>
+        <p class="prob">Outages and service tickets are unlinked. At scale this is where
+        detection either pays off or buries the CSP.</p>
+        <ul>
+          <li><b>Club tickets from one outage</b> instead of many ungrouped ones on a path that already skips duplicate detection</li>
+          <li><b>One-tap bulk resolution.</b> TAS is entirely per-candidate today — this is what keeps detection from becoming a burden</li>
+          <li><b>A deadline that reflects an outage</b> rather than an individual fault, so the CSP is not judged against a clock the situation makes impossible</li>
+        </ul>
+
+        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># outages detected</span><span class="chip todo"># outage-ticket resolution TAT</span></div></div>
+        
+      </div>
+    </div>
+
+<div class="item">
+      <div class="inum">06</div>
+      <div>
+        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O1</span><span class="when tbd">TBD</span></div>
+        <p class="mx-note" style="background:var(--accent-wash);border-radius:6px;padding:9px 13px;margin:0 0 10px;max-width:74ch"><b>Why this sits last.</b> This is the fundamental one — fixing it lets future services work in sync instead of us patching around each other. It is last only because it moves the objective less directly than the items above, not because it matters less.</p>
         <p class="prob"><b>Chaotic today.</b> Two systems compute the deadline, four hold a
         status, and no one owns the boundaries between them.</p>
         <ul>
@@ -300,36 +334,7 @@
       </div>
     </div>
 
-    <div class="item">
-      <div class="inum">05</div>
-      <div>
-        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O1</span><span class="when">Week 6–7</span></div>
-        <p class="prob">Every ticket today starts with a customer contact. Nothing in the system
-        looks for a problem before someone reports it.</p>
-        <ul>
-          <li><b>Feed telemetry into classification.</b> SRS already carries the anomaly scaffolding — classes, executors and deadlines exist, and nothing feeds them. This is the single unlock</li>
-          <li><b>Tell both parties early.</b> Notify the customer and the CSP that we believe something is wrong, with an ETA, before either has to ask</li>
-        </ul>
-        <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo"># issues the system detected before the customer reported it</span><span class="chip live"># service tickets reported by the customer</span></div></div>
       </div>
-    </div>
-
-    <div class="item">
-      <div class="inum">06</div>
-      <div>
-        <div class="ihead"><h3>Outage handling</h3><span class="tag">O1</span><span class="when">Week 8</span></div>
-        <p class="prob">Outages and service tickets are unlinked. At scale this is where
-        detection either pays off or buries the CSP.</p>
-        <ul>
-          <li><b>Club tickets from one outage</b> instead of many ungrouped ones on a path that already skips duplicate detection</li>
-          <li><b>One-tap bulk resolution.</b> TAS is entirely per-candidate today — this is what keeps detection from becoming a burden</li>
-          <li><b>A deadline that reflects an outage</b> rather than an individual fault, so the CSP is not judged against a clock the situation makes impossible</li>
-        </ul>
-        
-      </div>
-    </div>
-
-  </div>
 
 </section>
 
