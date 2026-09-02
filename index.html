@@ -141,8 +141,9 @@
     <div class="obj">
       <span class="oid">O1</span>
       <h3>Resolve faster, and keep everyone on the ticket able to see it</h3>
-      <p>Resolve faster — and let the customer, CSP and agent all see where the ticket stands.
-      Being unheard is a separate harm from being unresolved.</p>
+      <p>Cut the time to a genuine fix, and remove the need for the customer to chase it. The
+      customer, CSP and agent should all see where the ticket stands — being unheard is a
+      separate harm from being unresolved.</p>
     </div>
     <div class="obj">
       <span class="oid">O2</span>
@@ -210,16 +211,16 @@
 <section class="sec">
   <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
   <p class="lede"><b>01–03 are repair</b> — a reported path that is broken today.
-  <b>04–05 are new capability</b>, and <b>06 is foundational.</b> Each item lists the problems to be solved and the measures they move — and of the ten
+  <b>04–05 are new capability</b>, and <b>06 is foundational.</b> Each item lists the problems to be solved and the measures they move — and of the twelve
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
-  <span class="gl" style="margin-bottom:8px">The plan at a glance — 21 problems, in this order</span>
+  <span class="gl" style="margin-bottom:8px">The plan at a glance — 20 problems, in this order</span>
   <div class="plan">
     <div class="pr"><span class="pn">01</span><span class="pt">Information flow</span><span class="pc">5 problems</span><span class="pw">Week 1–2</span></div>
     <div class="pr"><span class="pn">02</span><span class="pt">Reopening of tickets</span><span class="pc">3 problems</span><span class="pw">Week 3–4</span></div>
     <div class="pr"><span class="pn">03</span><span class="pt">CSP said resolved vs actually resolved</span><span class="pc">3 problems</span><span class="pw">Week 5</span></div>
-    <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">3 problems</span><span class="pw">Week 6–7</span></div>
+    <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">2 problems</span><span class="pw">Week 6–7</span></div>
     <div class="pr"><span class="pn">05</span><span class="pt">Outage handling</span><span class="pc">3 problems</span><span class="pw">Week 8</span></div>
     <div class="pr"><span class="pn">06</span><span class="pt">Service guardrails — who owns what</span><span class="pc">4 problems</span><span class="pw tbd">TBD</span></div>
   </div>
@@ -234,9 +235,9 @@
         <ul>
           <li><b>The customer cannot see any progress.</b> The app shows no live status, so calling is the only way to find out — the exact loop we are trying to break</li>
           <li><b>The agent cannot see the execution.</b> Kapture holds the ticket in full, but nothing about whether a CSP accepted it, whether a technician was assigned, or when anyone will arrive. On a callback the agent can only repeat "Open"</li>
-          <li><b>What the agent learns on the call reaches nobody who can act on it.</b> Availability and fault clues are logged as a Kapture comment that stops at Ticket Service Java — a customer home only until 11 AM gets a 12 PM visit</li>
+          <li><b>What the agent learns on the call reaches nobody who can act on it.</b> Availability and fault clues are logged as a Kapture comment that stops at Ticket Service — a customer home only until 11 AM gets a 12 PM visit</li>
           <li><b>The CSP does not know the customer has already chased.</b> Repeat-contact count is one of the strongest urgency signals we hold, and it never leaves Kapture</li>
-          <li><b>A closure made in Kapture never reaches the CSP's card.</b> He travels to a job that no longer exists, with the clock still running</li>
+          <li><b>A closure made in Kapture never reaches the CSP's card.</b> The CSP travels to a job that no longer exists, with the clock still running</li>
         </ul>
         <p class="mx-note" style="margin:0 0 4px">These are the gaps we know of. The pattern repeats wherever one party needs something another already holds.</p>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Repeat calls per ticket by the customer</span><span class="chip todo">Information visibility across parties</span><span class="chip live">TAT to resolve the ticket</span></div></div>
@@ -278,7 +279,7 @@
         <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O2</span><span class="when">Week 6–7</span></div>
         <p class="prob"><b>Every ticket today starts with a customer contact.</b> Nothing in the system looks for a problem before someone reports it.</p>
         <ul>
-          <li><b>The system is ready to act on a fault we find ourselves — nothing ever tells it there is one.</b> SRS can already classify such an issue, route it to a CSP and put a deadline on it; no network data ever reaches it</li>
+
           <li><b>Neither the customer nor the CSP hears anything until the customer initiates.</b> Even where we could know first, there is no way to say so</li>
           <li><b>We cannot yet tell a real fault from a false alarm.</b> A proactive ticket on a healthy connection costs trust and CSP time, and we have no measure of how often that would happen</li>
         </ul>
