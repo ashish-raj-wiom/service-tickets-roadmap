@@ -76,6 +76,16 @@
   li { margin-bottom:4px; }
   li:last-child { margin-bottom:0; }
   li b { color:var(--ink); font-weight:620; }
+  .scen { display:grid; gap:9px; margin:0 0 13px; }
+  .sc { background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--crit); border-radius:7px; padding:11px 15px; }
+  .sc-h { font-size:.85rem; font-weight:650; color:var(--ink); display:block; margin-bottom:4px; }
+  .sc-b { font-size:.845rem; line-height:1.52; color:var(--ink-soft); margin:0; }
+  .sc-o { display:block; margin-top:6px; font-size:.815rem; color:var(--crit); font-weight:560; }
+  .gaps { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:7px; margin:0 0 4px; }
+  .gp { background:var(--surface-alt); border-radius:6px; padding:9px 12px; }
+  .gp b { display:block; font-size:.775rem; font-weight:650; color:var(--ink); margin-bottom:2px; }
+  .gp span { font-size:.795rem; color:var(--slate); line-height:1.42; }
+  .gl { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin:0 0 7px; }
   .mx { margin-top:11px; padding-top:10px; border-top:1px dashed var(--rule); }
   .mx-l { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin-bottom:7px; }
   .chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
@@ -197,14 +207,41 @@
       <div class="inum">01</div>
       <div>
         <div class="ihead"><h3>Information flow</h3><span class="tag">O2</span></div>
-        <p class="prob"><b>The largest gap.</b> Once a ticket exists, none of the three parties
-        can see what the others are doing.</p>
-        <ul>
-          <li><b>Customer → status.</b> The app shows no live progress, so calling is the only way to find out — the exact loop we are trying to break</li>
-          <li><b>Agent → ticket.</b> On a callback the agent sees no status and no CSP progress, and cannot reach the partner</li>
-          <li><b>Agent → CSP.</b> Availability, severity and fault clues learned on the call never reach the person fixing it</li>
-          <li><b>CSP → customer.</b> The CSP has no idea this customer has already chased three times — one of the strongest urgency signals we hold</li>
-        </ul>
+        <p class="prob"><b>The problem.</b> A ticket lives in four systems, and nobody working on
+        it can see the other three. So the only tool anyone has is to phone someone — <b>and that
+        call is the cost of the missing link.</b></p>
+
+        <div class="scen">
+          <div class="sc">
+            <span class="sc-h">1 · The customer who calls three times</span>
+            <p class="sc-b">Reports no internet at 9:43 PM, told 1:43 AM. Calls at 11 AM — the
+            agent sees only "Open", and cannot say whether a CSP accepted it or when anyone will
+            arrive. Calls again at 4 PM, same sentence.
+            <span class="sc-o">Three calls, no new information — and the CSP never learns they
+            chased.</span></p>
+          </div>
+          <div class="sc">
+            <span class="sc-h">2 · The CSP who travels to a finished job</span>
+            <p class="sc-b">The line recovers on its own and the agent marks it resolved in
+            Kapture. That closure never reaches the CSP's app.
+            <span class="sc-o">He travels to a completed job, and the clock still runs against
+            him. ~39 tickets a day.</span></p>
+          </div>
+          <div class="sc">
+            <span class="sc-h">3 · The context that dies on the call</span>
+            <p class="sc-b">The customer says the router light is red and they are home only
+            after 7 PM. The disposition carries the fault category; the rest has nowhere to go.
+            <span class="sc-o">The CSP arrives at 2 PM to a locked door.</span></p>
+          </div>
+        </div>
+
+        <span class="gl">The four blind spots</span>
+        <div class="gaps">
+          <div class="gp"><b>Customer → status</b><span>No live progress in the app, so calling is the only way to find out — the exact loop we are trying to break</span></div>
+          <div class="gp"><b>Agent → ticket</b><span>On a callback the agent sees no state, no CSP progress, and has no way to reach the partner</span></div>
+          <div class="gp"><b>Agent → CSP</b><span>Availability, severity and fault clues learned on the call never reach the person fixing it</span></div>
+          <div class="gp"><b>CSP → customer</b><span>No sight of how many times this customer has already chased — one of the strongest urgency signals we hold</span></div>
+        </div>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Repeat calls per ticket by the customer</span><span class="chip todo">Information visibility across parties</span><span class="chip todo">TAT to resolve the ticket</span></div></div>
       </div>
     </div>
