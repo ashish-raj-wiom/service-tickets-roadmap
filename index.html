@@ -277,7 +277,7 @@
         <ul>
           <li><b>Let verification block closure.</b> A check that cannot fail is a measurement, not a gate — until it can, "verified" is not a claim we can stand behind</li>
           <li><b>Use ping data to confirm the fix.</b> The same signal that detects a fault can confirm it is gone. This pairs directly with the item above</li>
-          <li><b>Close the customer loop.</b> The chat confirmation already works — extend it so a denial reopens the ticket directly, and so a silent customer is not read as success</li>
+          <li><b>Ask the customer only when the system cannot tell.</b> Where the ping check gives a clear verdict, trust it; where it cannot, the customer becomes the verifier. The chat loop already works — it needs the right trigger, not a rebuild</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">% resolved tickets carrying a verification verdict</span><span class="chip todo">False-resolution rate — ping down / check failed</span><span class="chip todo">Customer issue truly resolved vs CSP-reported resolved</span></div></div>
       </div>
