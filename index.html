@@ -69,6 +69,8 @@
   .inum { font-size:.95rem; font-weight:700; color:var(--accent); padding-top:1px; }
   .ihead { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:7px; }
   .ihead h3 { font-size:1.02rem; font-weight:650; margin:0; letter-spacing:-.01em; }
+  .when { font-size:9.5px; font-weight:700; letter-spacing:.07em; padding:2px 8px; border-radius:4px; background:var(--accent-wash); color:var(--accent); border:1px solid #E8D9BC; margin-left:auto; white-space:nowrap; }
+  .when.tbd { background:var(--surface-alt); color:var(--slate); border:1px dashed var(--rule); font-style:italic; }
   .tag { font-size:9.5px; font-weight:700; letter-spacing:.08em; padding:2px 7px; border-radius:4px; background:var(--future-wash); color:var(--future); }
   .prob { font-size:.87rem; color:var(--crit); background:var(--crit-wash); border-radius:6px; padding:8px 12px; margin:0 0 10px; max-width:74ch; }
   .prob b { font-weight:650; }
@@ -199,14 +201,15 @@
   <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap</h2></div>
   <p class="lede"><b>01–04 are repair</b> — a reported path that is broken today.
   <b>05–06 are new capability.</b> Each item names the measures it moves — and of the ten
-  below, <b>only one is tracked today.</b> Building the measurement is part of the work.</p>
+  below, <b>only one is tracked today.</b> Building the measurement is part of the work.
+  <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
   <div class="rm">
 
     <div class="item">
       <div class="inum">01</div>
       <div>
-        <div class="ihead"><h3>Information flow</h3><span class="tag">O2</span></div>
+        <div class="ihead"><h3>Information flow</h3><span class="tag">O2</span><span class="when">Week 1–2</span></div>
         <p class="prob"><b>The problem.</b> A ticket lives in four systems, and nobody working on
         it can see the other three. So the only tool anyone has is to phone someone — <b>and that
         call is the cost of the missing link.</b></p>
@@ -253,7 +256,7 @@
     <div class="item">
       <div class="inum">02</div>
       <div>
-        <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O2</span></div>
+        <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O2</span><span class="when">Week 3–4</span></div>
         <p class="prob">A reopen arrives looking like a brand-new problem, so the CSP works it
         from scratch.</p>
         <ul>
@@ -268,7 +271,7 @@
     <div class="item">
       <div class="inum">03</div>
       <div>
-        <div class="ihead"><h3>Verification of resolved tickets</h3><span class="tag">O2</span></div>
+        <div class="ihead"><h3>Verification of resolved tickets</h3><span class="tag">O2</span><span class="when">Week 5</span></div>
         <p class="prob">The connectivity check cannot fail a resolution — a negative verdict
         still closes the ticket as resolved <i>and</i> system-verified.</p>
         <ul>
@@ -283,7 +286,7 @@
     <div class="item">
       <div class="inum">04</div>
       <div>
-        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O2</span></div>
+        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O2</span><span class="when tbd">TBD</span></div>
         <p class="prob"><b>Chaotic today.</b> Two systems compute the deadline, four hold a
         status, and no one owns the boundaries between them.</p>
         <ul>
@@ -299,7 +302,7 @@
     <div class="item">
       <div class="inum">05</div>
       <div>
-        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O1</span></div>
+        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O1</span><span class="when">Week 6–7</span></div>
         <p class="prob">Every ticket today starts with a customer contact. Nothing in the system
         looks for a problem before someone reports it.</p>
         <ul>
@@ -314,7 +317,7 @@
     <div class="item">
       <div class="inum">06</div>
       <div>
-        <div class="ihead"><h3>Outage handling</h3><span class="tag">O1</span></div>
+        <div class="ihead"><h3>Outage handling</h3><span class="tag">O1</span><span class="when">Week 8</span></div>
         <p class="prob">Outages and service tickets are unlinked. At scale this is where
         detection either pays off or buries the CSP.</p>
         <ul>
