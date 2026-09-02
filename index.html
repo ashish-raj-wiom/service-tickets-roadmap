@@ -258,13 +258,15 @@
       <div class="inum">02</div>
       <div>
         <div class="ihead"><h3>Reopening of tickets</h3><span class="tag">O1</span><span class="when">Week 3–4</span></div>
-        <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work.
-        Today it is recorded, and then wasted.</b></p>
+        <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work — and
+        today it is recorded, then wasted.</b> It creates a new complaint with a fresh deadline, the
+        CSP is never told it is a repeat, and because Quality scores each ticket on its own,
+        marking resolved becomes a consequence-free exit.</p>
         <ul>
-          <li><b>What happens today.</b> A reopen creates a <i>new</i> complaint with its own fresh deadline — SRS recomputes the TAT from the reopen moment, so the clock starts again at zero</li>
-          <li><b>The CSP is never told it is a reopen.</b> SRS does store the lineage — chain root, parent ticket, reopen count — but the event it sends the CSP app carries only the deadline. The CSP works what looks like a brand-new fault, from scratch</li>
-          <li><b>Which makes reopening a consequence-free exit.</b> Quality scores each ticket on its own rather than the original problem. A CSP near a breach can mark it resolved; the reopen becomes a separate ticket with a clean clock, and neither ticket looks bad</li>
-          <li><b>Decide attribution first.</b> Whether a reopen is scored against the CSP changes their pay. That call is made before anything ships, not after</li>
+          <li><b>Carry the lineage to the CSP.</b> SRS already stores the chain root, the parent ticket and the reopen count — the event it sends the CSP app simply does not ship them. The CSP should see this is a repeat attempt, and what was already tried</li>
+          <li><b>Score the original problem, not each ticket.</b> Quality should judge the chain, so a reopen cannot turn one bad outcome into two clean-looking ones</li>
+          <li><b>Decide whether the clock restarts.</b> A reopen gets a brand-new TAT today. That may be right, but it should be a choice we made rather than a side effect of creating a new record</li>
+          <li><b>Settle attribution before shipping.</b> Whether a reopen is scored against the CSP changes their pay, so that call comes first</li>
         </ul>
         <p class="mx-note" style="margin:0 0 4px">The lineage is already captured — nothing reads it. This is a plumbing and scoring change, not a new data problem.</p>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip todo">Ticket reopen rate</span><span class="chip todo">Closure TAT after a ticket is reopened</span></div></div>
