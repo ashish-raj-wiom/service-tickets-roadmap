@@ -224,14 +224,14 @@
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
-  <span class="gl" style="margin-bottom:8px">The plan at a glance — 20 problems, in this order</span>
+  <span class="gl" style="margin-bottom:8px">The plan at a glance — 21 problems, in this order</span>
   <div class="plan">
     <div class="pr"><span class="pn">01</span><span class="pt">Information / signal flowing across systems</span><span class="pc">5 problems</span><span class="pw">Week 1–2</span></div>
     <div class="pr"><span class="pn">02</span><span class="pt">Reopening of tickets handling</span><span class="pc">3 problems</span><span class="pw">Week 3–4</span></div>
     <div class="pr"><span class="pn">03</span><span class="pt">CSP said resolved vs actually resolved</span><span class="pc">3 problems</span><span class="pw">Week 5</span></div>
     <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">2 problems</span><span class="pw">Week 6–7</span></div>
     <div class="pr"><span class="pn">05</span><span class="pt">Outage handling</span><span class="pc">3 problems</span><span class="pw">Week 8</span></div>
-    <div class="pr"><span class="pn">06</span><span class="pt">Service guardrails — who owns what</span><span class="pc">4 problems</span><span class="pw tbd">TBD</span></div>
+    <div class="pr"><span class="pn">06</span><span class="pt">Service guardrails — who owns what</span><span class="pc">5 problems</span><span class="pw tbd">TBD</span></div>
   </div>
 
   <div class="rm">
@@ -322,6 +322,7 @@
           <li><b>Four systems hold a status for the same ticket</b>, in four vocabularies, with no shared word for the same moment</li>
           <li><b>Service tickets run an 11am–9pm working window; the rest of the estate runs 9am–9pm.</b> Nobody has decided whether that difference is intended</li>
           <li><b>Where two services own the same thing, no one owns the boundary.</b> Adding a ticket type needs coordinated edits in three places, and a miss is silent</li>
+          <li><b>The customer is shown the wrong CSP contact.</b> When a ticket is created the app reads the partner's name and number from the legacy <code>t_account_mapping1</code> table, while the live record is maintained in <code>CSP_users</code> in Gateway — so a customer trying to reach their CSP calls a stale number, under a different person's name, and does not get through</li>
         </ul>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip none">No metric — this item defines which system owns what</span></div></div>
       </div>
