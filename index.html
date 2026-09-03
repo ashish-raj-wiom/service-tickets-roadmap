@@ -35,7 +35,8 @@
 
   /* objective */
   .obj-stmt { font-family:var(--serif); font-size:1.18rem; line-height:1.5; border-left:3px solid var(--accent); padding:2px 0 2px 22px; max-width:60ch; margin-bottom:22px; }
-  .objs { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .objs { display:grid; gap:14px; grid-template-columns:repeat(2,1fr); }
+  @media (max-width:640px) { .objs { grid-template-columns:1fr; } }
   .obj { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--future); border-radius:8px; padding:17px 19px; }
   .obj .oid { font-size:11px; font-weight:700; letter-spacing:.09em; color:var(--future); display:block; margin-bottom:5px; }
   .obj h3 { font-size:.98rem; font-weight:650; margin:0 0 7px; line-height:1.35; }
@@ -80,6 +81,7 @@
   .ihead h3 { font-size:1.02rem; font-weight:650; margin:0; letter-spacing:-.01em; }
   .when { font-size:9.5px; font-weight:700; letter-spacing:.07em; padding:2px 8px; border-radius:4px; background:var(--accent-wash); color:var(--accent); border:1px solid #E8D9BC; margin-left:auto; white-space:nowrap; }
   .when.tbd { background:var(--surface-alt); color:var(--slate); border:1px dashed var(--rule); font-style:italic; }
+  .tag.en { background:var(--accent-wash); color:var(--accent); }
   .tag { font-size:9.5px; font-weight:700; letter-spacing:.08em; padding:2px 7px; border-radius:4px; background:var(--future-wash); color:var(--future); }
   .prob { font-size:.87rem; color:var(--crit); background:var(--crit-wash); border-radius:6px; padding:8px 12px; margin:0 0 10px; max-width:74ch; }
   .prob b { font-weight:650; }
@@ -140,16 +142,23 @@
   <div class="objs">
     <div class="obj">
       <span class="oid">O1</span>
-      <h3>Resolve faster, and keep everyone on the ticket able to see it</h3>
-      <p>Cut the time to a genuine fix, and remove the need for the customer to chase it. The
-      customer, CSP and agent should all see where the ticket stands — being unheard is a
-      separate harm from being unresolved.</p>
+      <h3>Nobody on the ticket has to chase anyone for information</h3>
+      <p>The customer can see progress without calling, the agent can see the work in flight, and the CSP can see what the customer has already told us — and how often.</p>
     </div>
     <div class="obj">
       <span class="oid">O2</span>
-      <h3>Shrink the share of issues the customer has to report</h3>
-      <p>Every ticket today begins with a customer contact. Move toward detecting the problem
-      and acting before they need to call.</p>
+      <h3>When we say resolved, it is actually resolved</h3>
+      <p>A closure is backed by evidence rather than an assertion, and a reopen is read as proof the fix did not work — not as a fresh problem.</p>
+    </div>
+    <div class="obj">
+      <span class="oid">O3</span>
+      <h3>It gets fixed fast — including when many break at once</h3>
+      <p>Time to a genuine fix, measured from when the customer first reported it. One outage should not multiply that for everyone caught in it.</p>
+    </div>
+    <div class="obj">
+      <span class="oid">O4</span>
+      <h3>We find it before the customer has to tell us</h3>
+      <p>Every ticket today begins with a customer contact. Move toward detecting the problem and acting before they need to call.</p>
     </div>
   </div>
 
@@ -247,7 +256,7 @@
     <div class="item">
       <div class="inum">02</div>
       <div>
-        <div class="ihead"><h3>Reopening of tickets handling</h3><span class="tag">O1</span><span class="when">Week 3–4</span></div>
+        <div class="ihead"><h3>Reopening of tickets handling</h3><span class="tag">O2 · O3</span><span class="when">Week 3–4</span></div>
         <p class="prob"><b>A reopen is the clearest signal we get that a fix did not work — and today it is recorded, then wasted.</b></p>
         <ul>
           <li><b>The clock restarts on a reopen.</b> It creates a new complaint with a brand-new deadline, so the original breach never materialises</li>
@@ -262,7 +271,7 @@
     <div class="item">
       <div class="inum">03</div>
       <div>
-        <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O1</span><span class="when">Week 5</span></div>
+        <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O2</span><span class="when">Week 5</span></div>
         <p class="prob"><b>We check whether the line is back, then ignore the answer.</b> When a CSP marks a ticket resolved a connectivity check runs — but even when it comes back saying the line is still down, the ticket closes as resolved and is stamped system-verified.</p>
         <ul>
           <li><b>A failed check does not stop the closure.</b> The ticket closes either way, so "verified" in our data only means a check ran — not that it passed. We cannot stand behind that word today</li>
@@ -276,7 +285,7 @@
     <div class="item">
       <div class="inum">04</div>
       <div>
-        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O2</span><span class="when">Week 6–7</span></div>
+        <div class="ihead"><h3>Proactive detection of issues</h3><span class="tag">O4</span><span class="when">Week 6–7</span></div>
         <p class="prob"><b>Every ticket today starts with a customer contact.</b> Nothing in the system looks for a problem before someone reports it.</p>
         <ul>
 
@@ -290,7 +299,7 @@
     <div class="item">
       <div class="inum">05</div>
       <div>
-        <div class="ihead"><h3>Outage handling</h3><span class="tag">O2</span><span class="when">Week 8</span></div>
+        <div class="ihead"><h3>Outage handling</h3><span class="tag">O3</span><span class="when">Week 8</span></div>
         <p class="prob"><b>Outages and service tickets are unlinked.</b> At scale this is where detection either pays off or buries the CSP.</p>
         <ul>
           <li><b>One outage produces many ungrouped tickets</b>, on a path that already skips duplicate detection</li>
@@ -305,7 +314,7 @@
 <div class="item">
       <div class="inum">06</div>
       <div>
-        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag">O1</span><span class="when tbd">TBD</span></div>
+        <div class="ihead"><h3>Service guardrails — who owns what</h3><span class="tag en">Enabler</span><span class="when tbd">TBD</span></div>
         <p class="mx-note" style="background:var(--accent-wash);border-radius:6px;padding:9px 13px;margin:0 0 10px;max-width:74ch"><b>Why this sits last.</b> This is the fundamental one — fixing it lets future services work in sync instead of us patching around each other. It is last only because it moves the objective less directly than the items above, not because it matters less.</p>
         <p class="prob"><b>Chaotic today.</b> Responsibilities overlap, and no one owns the boundaries between services.</p>
         <ul>
