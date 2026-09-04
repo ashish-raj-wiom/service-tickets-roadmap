@@ -99,6 +99,8 @@
   .gp b { display:block; font-size:.775rem; font-weight:650; color:var(--ink); margin-bottom:2px; }
   .gp span { font-size:.795rem; color:var(--slate); line-height:1.42; }
   .gl { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin:0 0 7px; }
+  .dl { display:inline-block; margin-top:10px; font-size:.83rem; font-weight:650; color:var(--future); text-decoration:none; border-bottom:1.5px solid var(--future-wash); padding-bottom:1px; }
+  .dl:hover { border-bottom-color:var(--future); }
   .mx { margin-top:11px; padding-top:10px; border-top:1px dashed var(--rule); }
   .mx-l { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin-bottom:7px; }
   .chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
@@ -324,6 +326,7 @@
           <li><b>Where two services own the same thing, no one owns the boundary.</b> Adding a ticket type needs coordinated edits in three places, and a miss is silent</li>
           <li><b>The customer is shown the wrong CSP contact.</b> When a ticket is created the app reads the partner's name and number from the legacy <code>t_account_mapping1</code> table, while the live record is maintained in <code>CSP_users</code> in Gateway — so a customer trying to reach their CSP calls a stale number, under a different person's name, and does not get through</li>
         </ul>
+        <a class="dl" href="https://ashish-raj-wiom.github.io/service-tickets-consolidation/" target="_blank" rel="noopener">More details — what a single Ticket Service would take &rarr;</a>
         <div class="mx"><span class="mx-l">Metrics this moves</span><div class="chips"><span class="chip none">No metric — this item defines which system owns what</span></div></div>
       </div>
     </div>
