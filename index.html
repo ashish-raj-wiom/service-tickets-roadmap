@@ -226,9 +226,9 @@
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
-  <span class="gl" style="margin-bottom:8px">The plan at a glance — 21 problems, in this order</span>
+  <span class="gl" style="margin-bottom:8px">The plan at a glance — 22 problems, in this order</span>
   <div class="plan">
-    <div class="pr"><span class="pn">01</span><span class="pt">Information / signal flowing across systems</span><span class="pc">5 problems</span><span class="pw">Week 1–2</span></div>
+    <div class="pr"><span class="pn">01</span><span class="pt">Information / signal flowing across systems</span><span class="pc">6 problems</span><span class="pw">Week 1–2</span></div>
     <div class="pr"><span class="pn">02</span><span class="pt">Reopening of tickets handling</span><span class="pc">3 problems</span><span class="pw">Week 3–4</span></div>
     <div class="pr"><span class="pn">03</span><span class="pt">CSP said resolved vs actually resolved</span><span class="pc">3 problems</span><span class="pw">Week 5</span></div>
     <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">2 problems</span><span class="pw">Week 6–7</span></div>
@@ -248,6 +248,7 @@
           <li><b>The agent cannot see the execution.</b> Kapture holds the ticket in full, but nothing about whether a CSP accepted it, whether a technician was assigned, or when anyone will arrive. On a callback the agent can only repeat "Open"</li>
           <li><b>What the agent learns on the call reaches nobody who can act on it.</b> Availability and fault clues are logged as a Kapture comment that stops at Ticket Service — a customer home only until 11 AM gets a 12 PM visit</li>
           <li><b>The CSP does not know the customer has already chased.</b> Repeat-contact count is one of the strongest urgency signals we hold, and it never leaves Kapture</li>
+          <li><b>The CSP cannot see any connection data to diagnose with.</b> The card carries identifiers — connection, device, customer — and no telemetry at all: no ping status, no optical power, no uptime history. They arrive and diagnose blind, on the customer's description alone. <b>We do pull this data — but only after they mark it resolved, to check their work</b></li>
           <li><b>A closure made in Kapture never reaches the CSP's card.</b> The CSP travels to a job that no longer exists, with the clock still running</li>
         </ul>
         <p class="mx-note" style="margin:0 0 4px">These are the gaps we know of. The pattern repeats wherever one party needs something another already holds.</p>
