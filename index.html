@@ -262,7 +262,7 @@
         <div class="ihead"><h3>CSP said resolved vs actually resolved</h3><span class="tag">O2</span><span class="when">Week 3–4</span></div>
         <p class="prob"><b>We check whether the line is back, then ignore the answer.</b> When a CSP marks a ticket resolved a connectivity check runs — but even when it comes back saying the line is still down, the ticket closes as resolved and is stamped system-verified.</p>
         <ul>
-          <li><b>A failed check does not stop the closure.</b> The ticket closes either way, so "verified" in our data only means a check ran — not that it passed. We cannot stand behind that word today</li>
+          <li><b>"Verified" in our data does not mean verified.</b> The flag records only that a check ran, not that it passed — so a ticket that was genuinely fixed and one that was not look identical when we go looking</li>
           <li><b>We do not know whether ping-up means the problem is gone.</b> A line can be up at the moment we check and still be slow or dropping — and the same signal underwrites proactive detection later</li>
           <li><b>When the check gives an inconclusive verdict, there is no path to the customer.</b> The chat confirmation loop exists but is not triggered by an inconclusive check, so a silent customer is read as success</li>
         </ul>
