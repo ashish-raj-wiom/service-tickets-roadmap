@@ -99,6 +99,8 @@
   .gp b { display:block; font-size:.775rem; font-weight:650; color:var(--ink); margin-bottom:2px; }
   .gp span { font-size:.795rem; color:var(--slate); line-height:1.42; }
   .gl { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-light); display:block; margin:0 0 7px; }
+  .il { color:var(--future); font-weight:620; text-decoration:none; border-bottom:1px solid var(--future-wash); }
+  .il:hover { border-bottom-color:var(--future); }
   .dl { display:inline-block; margin-top:10px; font-size:.83rem; font-weight:650; color:var(--future); text-decoration:none; border-bottom:1.5px solid var(--future-wash); padding-bottom:1px; }
   .dl:hover { border-bottom-color:var(--future); }
   .mx { margin-top:11px; padding-top:10px; border-top:1px dashed var(--rule); }
@@ -226,9 +228,9 @@
   below, <b>only two are tracked today.</b> Building the measurement is part of the work.
   <b>Timelines are indicative</b> — a sequencing view, not committed dates.</p>
 
-  <span class="gl" style="margin-bottom:8px">The plan at a glance — 22 problems, in this order</span>
+  <span class="gl" style="margin-bottom:8px">The plan at a glance — 21 problems, in this order</span>
   <div class="plan">
-    <div class="pr"><span class="pn">01</span><span class="pt">Information / signal flowing across systems</span><span class="pc">6 problems</span><span class="pw">Week 1–2</span></div>
+    <div class="pr"><span class="pn">01</span><span class="pt">Information / signal flowing across systems</span><span class="pc">5 problems</span><span class="pw">Week 1–2</span></div>
     <div class="pr"><span class="pn">02</span><span class="pt">CSP said resolved vs actually resolved</span><span class="pc">3 problems</span><span class="pw">Week 3–4</span></div>
     <div class="pr"><span class="pn">03</span><span class="pt">Reopening of tickets handling</span><span class="pc">3 problems</span><span class="pw">Week 5</span></div>
     <div class="pr"><span class="pn">04</span><span class="pt">Proactive detection of issues</span><span class="pc">2 problems</span><span class="pw">Week 6–7</span></div>
@@ -245,9 +247,8 @@
         <p class="prob"><b>A ticket lives in four systems, and nobody working on it can see the other three.</b> So the only tool anyone has is to phone someone — and that call is the cost of the missing link.</p>
         <ul>
           <li><b>The customer cannot see any progress.</b> The app shows no live status, so calling is the only way to find out — the exact loop we are trying to break</li>
+          <li><b>Roughly one ticket in four is never acknowledged in chat at all.</b> Creation-chat coverage sits at <b>76%</b> — and for tickets that start in the call-centre queue and later move to the Partner queue it is <b>0%</b> (0 of 2,443 in a measured week). The customer is never told the ticket exists, so calling again is the only way to learn anything. <a class="il" href="https://ashish-raj-wiom.github.io/cc-partner-chat-trigger-prd/" target="_blank" rel="noopener">Specced and signed off &rarr;</a></li>
           <li><b>The agent cannot see the execution.</b> Kapture holds the ticket in full, but nothing about whether a CSP accepted it, whether a technician was assigned, or when anyone will arrive. On a callback the agent can only repeat "Open"</li>
-          <li><b>What the agent learns on the call reaches nobody who can act on it.</b> Availability and fault clues are logged as a Kapture comment that stops at Ticket Service — a customer home only until 11 AM gets a 12 PM visit</li>
-          <li><b>The CSP does not know the customer has already chased.</b> Repeat-contact count is one of the strongest urgency signals we hold, and it never leaves Kapture</li>
           <li><b>The CSP cannot see any connection data to diagnose with.</b> The card carries identifiers — connection, device, customer — and no telemetry at all: no ping status, no optical power, no uptime history. They arrive and diagnose blind, on the customer's description alone. <b>We do pull this data — but only after they mark it resolved, to check their work</b></li>
           <li><b>A closure made in Kapture never reaches the CSP's card.</b> The CSP travels to a job that no longer exists, with the clock still running</li>
         </ul>
